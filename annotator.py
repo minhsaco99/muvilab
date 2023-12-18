@@ -9,6 +9,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import cv2
 from tqdm import tqdm
+import argparse
 
 version_info = (0, 2, 9)
 __version__ = '.'.join(str(c) for c in version_info)
@@ -781,9 +782,20 @@ class Annotator:
 
            
 if __name__ == '__main__':
-    videos_folder = r'./Videos'
-    labels = [{'name': 'walk', 'color': (0, 255, 0)},
-              {'name': 'run', 'color': (0, 0, 255)},
-              {'name': 'jump', 'color': (0, 255, 255)}]
-    annotator = Annotator(labels, videos_folder, annotation_file=r'./labels.json')
+    parser = argparse.ArgumentParser("Labeling tool params parser")
+    parser.add_argument('--video_folder', required=True, type=str,
+                    help='path to video folder')
+    parser.add_argument('--output_label', default='./labels.json',
+                    type=str, 
+                    help='output label file')
+    args = parser.parse_args()
+    videos_folder = args.video_folder
+    labels = [{'name': 'other', 'color': (0, 255, 0)},
+              {'name': 'eating', 'color': (0, 0, 255)},
+              {'name': 'touch nose', 'color': (0, 255, 255)},
+              {'name': 'double hand', 'color': (255, 0, 255)},
+              {'name': 'single hand', 'color': (255, 255, 0)},
+              {'name': 'scratching head', 'color': (255, 0, 0)},
+              ]
+    annotator = Annotator(labels, videos_folder, annotation_file=args.output_label)
     annotator.main()

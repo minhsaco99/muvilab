@@ -28,9 +28,9 @@ Simply install the following required pagackes:
 
     $ pip install opencv-python numpy pytube tqdm matplotlib
     
-and run the demo:
+and run:
 
-    $ python examples/example_youtube_olympics.py
+    $ python annotator.py --video_folder {path_to_video_folder} --output_label {path_to_json_output}
 
 The `pytube` package is only needed to download a youtube video to run the demo.
 
