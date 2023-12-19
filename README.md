@@ -30,7 +30,7 @@ Simply install the following required pagackes:
     
 and run:
 
-    $ python annotator.py --video_folder {path_to_video_folder} --output_label {path_to_json_output}
+    $ python annotator.py --video_folder {path_to_video_folder} --output_label {path_to_json_output} --n_show {number_of_video_to_show}
 
 The `pytube` package is only needed to download a youtube video to run the demo.
 

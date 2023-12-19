@@ -788,6 +788,9 @@ if __name__ == '__main__':
     parser.add_argument('--output_label', default='./labels.json',
                     type=str, 
                     help='output label file')
+    parser.add_argument('--n_show', default=20,
+                    type=int, 
+                    help='number of videos to show to screen')
     args = parser.parse_args()
     videos_folder = args.video_folder
     labels = [{'name': 'other', 'color': (0, 255, 0)},
@@ -797,5 +800,5 @@ if __name__ == '__main__':
               {'name': 'single hand', 'color': (255, 255, 0)},
               {'name': 'scratching head', 'color': (255, 0, 0)},
               ]
-    annotator = Annotator(labels, videos_folder, annotation_file=args.output_label)
+    annotator = Annotator(labels, videos_folder, N_show_approx=args.n_show, annotation_file=args.output_label)
     annotator.main()
